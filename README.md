@@ -16,3 +16,17 @@
 2. Train the model and save the model. 
 3. Generate the predicted results and save the results file.
 4. Use the evluation repetition and exploration script to get the results.
+
+
+## Format description
+* jsondata: 
+
+> history data: {uid1: [[-1], basket, basket, ..., [-1]], uid2:[[-1], basket, basket, ..., [-1]], ... }
+> future data: {uid1: [[-1], basket, [-1]], uid2: [[-1], basket, [-1]], ...}
+
+* mergedata: 
+
+> {uid1: [basket, basket, ..., basket], uid2: [basket, basket, ..., basket], ...}
+* Predict results:
+
+> {uid1: [item, item, ..., item], uid2: [item, item, ..., item], ...}
