@@ -4,15 +4,15 @@
 * Source code and datasets.
 * Descriptions of different dataset format.
 * Pipelines about how to run and get results.
-* a PDF file with the additional plots, which can not be included in the paper due to space limitation.
+* A PDF file with the additional plots, which can not be included in the paper due to space limitation.
 
 ## Structure
-* dataset: contains the .csv dataset after preprocessing.
+* dataset: contains the .csv format dataset after preprocessing.
 * jsondata: contains the .json format dataset. Split into history file and future file.
 * mergedata: contains the .json format dataset. Merged history file and future file.
 * methods: contains the source code of different NBR methods and the original url repository link of these methods.
 * keyset_fold.py: split the dataset across users for train/validate/test experiments.
-* evaluation: scripts for evaluation rep-expl.
+* evaluation: scripts for evaluation.
     * metrics.py: the general metrics.
     * performance_gain.py: evaluate the contribution of repetition and exploration.
     * model_performance.py: evaluate the baskets' rep/expl ratio, and the recall, phr performance w.r.t. repetition and exploration.
