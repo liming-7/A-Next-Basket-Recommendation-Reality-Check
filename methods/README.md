@@ -7,4 +7,4 @@ The following repositories have more detail information about how to run each NB
 * Sets2Sets: https://github.com/HaojiHu/Sets2Sets
 * DNNTSP: https://github.com/yule-BUAA/DNNTSP
 * TIFUKNN: https://github.com/HaojiHu/TIFUKNN
-* Recency(UP-CF): https://github.com/MayloIFERR/RACF
+* UP-CF@r: https://github.com/MayloIFERR/RACF
