@@ -1,6 +1,6 @@
 # Source Code and Appendix for "A Next Basket Recommendation Reality Check"
 
-## Content of this repository
+## Contents of this repository
 * Source code and datasets.
 * Descriptions of different dataset format.
 * Pipelines about how to run and get results.
