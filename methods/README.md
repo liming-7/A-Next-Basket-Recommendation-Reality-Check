@@ -1,6 +1,6 @@
-# Source code and description link
+## The original source code of each NBR methods.
 
-The following source rep have a more detailed description about how to run each method.
+The following repositories have more detail information about how to run each NBR method.
 * DREAM: https://github.com/yihong-chen/DREAM
 * BEACON: https://github.com/PreferredAI/beacon
 * CLEA: https://github.com/QYQ-bot/CLEA/tree/main/CLEA
