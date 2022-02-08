@@ -8,8 +8,8 @@
 
 ## Structure
 * dataset: contains the .csv format dataset after preprocessing.
-* jsondata: contains the .json format dataset. The dataset split into history file and future file.
-* mergedata: contains the .json format dataset. Merge history file and future file.
+* jsondata: contains the .json format dataset.
+* mergedata: contains the .json format dataset. 
 * methods: contains the source code of different NBR methods and the original url repository link of these methods.
 * keyset_fold.py: splits the datasets across users for train/validate/test.
 * evaluation: scripts for evaluation.
