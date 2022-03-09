@@ -20,7 +20,7 @@
 
 ## Pipeline
 1. Select the datasets according to different methods. (Edit the entry and put datasets at the corresponding folder.)
-2. Train the model and save the model. 
+2. Train the model and save the model. (Since we use the original implementations of the authors, we provide the original repository links, which contain the instructions of the environment setting, how to run each method, etc.)
 3. Generate the predicted results via the trained model and save the results file.
 4. Use the evaluation scripts to get the performance results.
 
