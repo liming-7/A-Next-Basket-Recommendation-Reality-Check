@@ -33,7 +33,7 @@
    The keyset files will be saved at the keyset folder:
    keyset/dunnhumby_keyset_{index}.json
    
-   [2] set hyper-parameters according to the source code instructions
+   [2] set hyper-parameters according to the original source code instructions
    ```
    cd methods/tifuknn/
    python tifuknn_new.py ../../jsondata/dunnhumby_history.json ../../jsondata/dunnhumby_future.json ../../keyset/dunnhumby_keyset_0.json 900 0.9 0.6 0.2 3 20
