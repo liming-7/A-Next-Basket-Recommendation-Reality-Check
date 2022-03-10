@@ -24,7 +24,30 @@
 3. Generate the predicted results via the trained model and save the results file.
 4. Use the evaluation scripts to get the performance results.
 
-
+### Take TIFUKNN and dunnhumby dataset as an example:
+   [1] create the keyset folder and generate several keyset files (To perform user-level analysis, we use keyset files instead of random seeds to repeat experiments.)
+   ```
+   mikdir keyset
+   python keyfold.py
+   ```
+   The keyset files will be saved at the keyset folder:
+   keyset/dunnhumby_keyset_{index}.json
+   [2] set hyper-parameters according to the source code instructions
+   ```
+   cd methods/tifuknn/
+   python tifuknn_new.py ../../jsondata/dunnhumby_history.json ../../jsondata/dunnhumby_future.json ../../keyset/dunnhumby_keyset_0.json 900 0.9 0.6 0.2 3 20
+python tifuknn_new.py ../../jsondata/dunnhumby_history.json ../../jsondata/dunnhumby_future.json ../../keyset/dunnhumby_keyset_1.json 900 0.9 0.6 0.2 3 20
+python tifuknn_new.py ../../jsondata/dunnhumby_history.json ../../jsondata/dunnhumby_future.json ../../keyset/dunnhumby_keyset_2.json 900 0.9 0.6 0.2 3 20
+   ```
+   The predict results for each user will be saved at the method folder:
+   > methods/tifuknn/dunnhumby_pred{index}.json
+   
+[3] run the evaluation script
+   ```
+   python model_performance.py
+   ```
+   Need to config the name of the pred_file and the index of the keyset file before running.
+   
 ## Dataset format description
 * jsondata: 
 
