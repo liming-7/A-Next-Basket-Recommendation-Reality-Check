@@ -1,0 +1,23 @@
+{
+  "model_name": "nbr",
+  "loss_uplift": 100,
+  "embedding_size": 32,
+  "embedding_type": "mean",
+  "hidden_size": 32,
+  "dropout_prob": 0.1,
+  "max_len": 50,
+  "learning_rate": 0.001,
+  "epochs": 100,
+  "batch_size": 32,
+  "eval_step": 1,
+  "stopping_step": 5,
+  "valid_metric_bigger": 1,
+  "valid_metric": "recall20",
+  "log_file": "logs/tafeng/test.log",
+  "train_file": "../jsondata/tafeng_history.json",
+  "tgt_file": "../jsondata/tafeng_future.json",
+  "data_config_file": "../keyset/tafeng_keyset_",
+  "item_candidate": "../datacand/tafeng_item",
+  "user_candidate": "../datacand/tafeng_user",
+  "checkpoint_dir": "models/tafeng/"
+}

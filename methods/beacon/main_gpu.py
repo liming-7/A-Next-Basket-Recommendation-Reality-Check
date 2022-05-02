@@ -25,8 +25,8 @@ tf.flags.DEFINE_string("output_dir", "results", "The output directory (default: 
 tf.flags.DEFINE_string("tensorboard_dir", "tf_folder", "The tensorboard directory (default: None)")
 
 
-tf.flags.DEFINE_integer("emb_dim", 2, "The dimensionality of embedding (default: 2)")
-tf.flags.DEFINE_integer("rnn_unit", 4, "The number of hidden units of RNN (default: 4)")
+tf.flags.DEFINE_integer("emb_dim", 64, "The dimensionality of embedding (default: 2)")
+tf.flags.DEFINE_integer("rnn_unit", 64, "The number of hidden units of RNN (default: 4)")
 tf.flags.DEFINE_integer("nb_hop", 1, "The number of neighbor hops  (default: 1)")
 tf.flags.DEFINE_float("alpha", 0.5, "The reguralized hyper-parameter (default: 0.5)")
 

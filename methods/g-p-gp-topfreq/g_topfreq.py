@@ -33,18 +33,15 @@ if __name__ == '__main__':
                 s_pop_dict[item] += 1
         s_dict = sorted(s_pop_dict.items(), key=lambda d: d[1], reverse=True)
         pred = []
-        for item, cnt in s_dict:
-            pred.append(item)
-
         ind = 0
         while(len(pred)<100):
             if g_top_list[ind] not in pred:
                 pred.append(g_top_list[ind])
             ind += 1
         pred_dict[user] = pred
-    if not os.path.exists('gp_top_pred/'):
-        os.makedirs('gp_top_pred/')
-    with open(f'gp_top_pred/{dataset}_pred{fold_id}.json', 'w') as f:
+    if not os.path.exists('g_top_pred/'):
+        os.makedirs('g_top_pred/')
+    with open(f'g_top_pred/{dataset}_pred{fold_id}.json', 'w') as f:
         json.dump(pred_dict, f)
 
 
