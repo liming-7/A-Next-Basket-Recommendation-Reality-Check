@@ -92,7 +92,6 @@ Three frequency based methods are under the folder "g-p-gp-topfreq":
 * Step 2: Using the following commands to run each method:
 ```
 cd g-p-gp-topfreq
-
 python g_topfreq.py --dataset dunnhumby --fold_id 0
 ...
 python p_topfreq.py --dataset dunnhumby --fold_id 0
@@ -109,7 +108,6 @@ Predicted file name: {dataset}_pred{fold_id}.json
 * Step 2: Train and save the model using the following commands:
 ```
 cd dream
-
 python trainer.py --dataset dunnhumby --fold_id 0 --attention 1
 ...
 python trainer.py --dataset tafeng --fold_id 0 --attention 1
@@ -133,7 +131,6 @@ Predicted file name: {dataset}_pred{fold_id}.json
 * Step 2: Generate pre-computed correlation matrix using the following commands:
 ```
 cd beacon
-
 python cmatrix_generator.py --dataset dunnhumby --foldk 0
 ...
 python cmatrix_generator.py --dataset tafeng --foldk 0
@@ -167,7 +164,6 @@ Predicted file name: {dataset}_pred{foldk}.json
 * Step 2: Pre-train several epochs using the following commands:
 ```
 cd clea
-
 python new_main.py --dataset dunnhumby --foldk 0 --pretrain_epoch 20 --before_epoch 0 --epoch 10  --embedding_dim 64 --num_product 3920 --num_users 22530
 ...
 python new_main.py --dataset tafeng --foldk 0 --pretrain_epoch 20 --before_epoch 0 --epoch 10 --embedding_dim 64 --num_product 11997 --num_users 13858
@@ -201,7 +197,6 @@ Predicted file name: {dataset}_pred{foldk}.json
 * Step 2: Train and save Sets2Sets model using the following commands:
 ```
 cd sets2sets
-
 python sets2sets_new.py dunnhumby 0 10 1
 ...
 python sets2sets_new.py tafeng 1 10 1
@@ -258,7 +253,6 @@ Predicted file name: {dataset}_pred{foldk}.json
 * Step 2: Predict and save the results using the following commands:
 ```
 cd upcf
-
 python racf.py --dataset dunnhumby --foldk 0 --recency 25 --asymmetry 0.75 --locality 10
 ...
 python racf.py --dataset tafeng --foldk 0 --recency 10 --asymmetry 0.75 --locality 10
@@ -272,7 +266,6 @@ Predicted file name: {dataset}_pred{foldk}.json
 * Step 1: Predict and save the results using the following commands:
 ```
 cd tifuknn
-
 python tifuknn_new.py ../../jsondata/dunnhumby_history.json ../../jsondata/dunnhumby_future.json ../../keyset/dunnhumby_keyset_0.json 900 0.9 0.6 0.2 3 20
 ...
 python tifuknn_new.py ../../jsondata/tafeng_history.json ../../jsondata/tafeng_future.json ../../keyset/tafeng_keyset_0.json 300 0.9 0.7 0.7 7 20
