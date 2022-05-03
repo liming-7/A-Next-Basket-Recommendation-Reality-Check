@@ -1,7 +1,7 @@
 # Source Code and Appendix for "A Next Basket Recommendation Reality Check"
 
 ## Required packages
-To run our preprocessing, data splitting, evaluation scripts, Pandas, Numpy, Python >= 3.6 is required.
+To run our preprocessing, data splitting, evaluation scripts, Pandas, Numpy and Python >= 3.6 are required.
 
 To run the pubished methods' code, you can go to the orginal repository and check the required packages.
 ## Contents of this repository
