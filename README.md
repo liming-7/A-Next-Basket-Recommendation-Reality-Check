@@ -86,12 +86,10 @@ Our approach to reproducibility is to rely as much as possible on the artifacts 
 We also provide our additional instructions if the original repository is not clear, as well as the parameters we use.
 
 ### G-TopFreq, P-TopFreq, GP-TopFreq
-Three frequency based methods are under the folder "g-p-gp-topfreq":
-
+Three frequency based methods are under the folder "methods/g-p-gp-topfreq".
 * Step 1: Check the file path of the dataset, or put the dataset into corresponding folder.
 * Step 2: Using the following commands to run each method:
 ```
-cd g-p-gp-topfreq
 python g_topfreq.py --dataset dunnhumby --fold_id 0
 ...
 python p_topfreq.py --dataset dunnhumby --fold_id 0
@@ -104,10 +102,10 @@ Predicted files are stored under folder: "g_top_freq", "p_top_freq", "gp_top_fre
 Predicted file name: {dataset}_pred{fold_id}.json
 
 ### Dream
+Dream is under the folder "methods/dream".
 * Step 1: Check the file path of the dataset in the config-param file "{dataset}conf.json"
 * Step 2: Train and save the model using the following commands:
 ```
-cd dream
 python trainer.py --dataset dunnhumby --fold_id 0 --attention 1
 ...
 python trainer.py --dataset tafeng --fold_id 0 --attention 1
@@ -127,10 +125,10 @@ python pred_results.py --dataset instacart --fold_id 0
 Predicted file name: {dataset}_pred{fold_id}.json
 
 ### Beacon
+Beacon is under the folder "methods/beacon".
 * Step 1: Copy dataset to its folder, check the file path of the dataset.
 * Step 2: Generate pre-computed correlation matrix using the following commands:
 ```
-cd beacon
 python cmatrix_generator.py --dataset dunnhumby --foldk 0
 ...
 python cmatrix_generator.py --dataset tafeng --foldk 0
@@ -159,11 +157,10 @@ python main_gpu.py --dataset instacart --foldk 0 --prediction_mode True --emb_di
 Predicted file name: {dataset}_pred{foldk}.json
 
 ### CLEA
+CLEA is under the folder "methods/clea"
 * Step 1: Copy dataset to its folder, check the file path of the dataset.
-
 * Step 2: Pre-train several epochs using the following commands:
 ```
-cd clea
 python new_main.py --dataset dunnhumby --foldk 0 --pretrain_epoch 20 --before_epoch 0 --epoch 10  --embedding_dim 64 --num_product 3920 --num_users 22530
 ...
 python new_main.py --dataset tafeng --foldk 0 --pretrain_epoch 20 --before_epoch 0 --epoch 10 --embedding_dim 64 --num_product 11997 --num_users 13858
@@ -193,10 +190,10 @@ python pred_results.py --dataset instacart --foldk 1 --log_fire cleamodel --alte
 Predicted file name: {dataset}_pred{foldk}.json
 
 ### Sets2Sets
+Sets2Sets is under the folder "methods/sets2sets"
 * Step 1: Copy dataset to its folder or check the file path of the dataset.
 * Step 2: Train and save Sets2Sets model using the following commands:
 ```
-cd sets2sets
 python sets2sets_new.py dunnhumby 0 10 1
 ...
 python sets2sets_new.py tafeng 1 10 1
@@ -216,6 +213,7 @@ python sets2sets_new.py instacart 2 10 0
 Predicted file name: {dataset}_pred{foldk}.json
 
 ### DNNTSP
+DNNTSP is under the folder "methods/dnntsp".
 * Step 1: Go to config/parameter file, edit the following values: data, history_path, future_path, keyset_ path, item_embed_dim, items_total ... an example:
 ```
 {
@@ -237,22 +235,20 @@ Predicted file name: {dataset}_pred{foldk}.json
 ```
 * Step 2: Train and save the models using the following command:
 ```
-cd dnntsp/train
 python train_main.py
 ```
 * Step 3: Predict and save results using the following commands:
 ```
-cd dnntsp
 python pred_results.py --dataset dunnhumby --fold_id 0 --best_mode_path XXX
 ```
 Note, DNNTSP will save several models during the training, an epoch model will be saved if it has higher performance than previous epoch, so XXX is the path of the last model saved during the training.
 
 Predicted file name: {dataset}_pred{foldk}.json
 ### UP-CF
+UP-CF is under the folder "methods/upcf".
 * Step 1: Copy the dataset to its folder, and check the dataset path and keyset path.
 * Step 2: Predict and save the results using the following commands:
 ```
-cd upcf
 python racf.py --dataset dunnhumby --foldk 0 --recency 25 --asymmetry 0.75 --locality 10
 ...
 python racf.py --dataset tafeng --foldk 0 --recency 10 --asymmetry 0.75 --locality 10
@@ -263,6 +259,7 @@ python racf.py --dataset instacart --foldk 0 --recency 10 --asymmetry 0.75 --loc
 Predicted file name: {dataset}_pred{foldk}.json
 
 ### TIFUKNN
+TIFUKNN is under the folder "methods/tifuknn"
 * Step 1: Predict and save the results using the following commands:
 ```
 cd tifuknn
@@ -278,7 +275,6 @@ Predicted file name: {dataset}_pred{foldk}.json
 Once we got the reommended basket of the model/algorithm on all datasets, you can use our scripts in the evalution folder to evaluate performance w.r.t. repetition and exploration.
 
 Note that, each method will save their results to their own pred folder. 
-
 
 ### Performance
 
