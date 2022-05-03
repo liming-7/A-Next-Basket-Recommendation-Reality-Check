@@ -13,8 +13,8 @@ To run the pubished methods' code, you can go to the orginal repository and chec
 ## Structure
 * preprocess: contains the script of dataset preprocessing.
 * dataset: contains the .csv format dataset after preprocessing.
-* jsondata: contains the .json format dataset.
-* mergedata: contains the .json format dataset. 
+* jsondata: contains the .json format dataset after preprocessing.
+* mergedata: contains the .json format dataset after preprocessing. 
 * methods: contains the source code of different NBR methods and the original url repository link of these methods.
 * keyset_fold.py: splits the datasets across users for train/validate/test.
 * evaluation: scripts for evaluation.
@@ -24,8 +24,8 @@ To run the pubished methods' code, you can go to the orginal repository and chec
 * appendix: contains a PDF file with the additional plots.
 
 ## Pipeline
-* Step 1. Select the datasets according to different methods. (Edit the entry and put datasets at the corresponding folder.)
-* Step 2. Train the model and save the model. (Note we use the original implementations of the authors, so we provide the original repository links, which contain the instructions of the environment setting, how to run each method, etc. we will also provide additional instructions in the following section, if the original repository do not have enough information.)
+* Step 1. Select the different types of preprossed datasets according to different methods. (Edit the entry or put datasets at the corresponding folder.)
+* Step 2. Train the model and save the model. (Note that we use the original implementations of the authors, so we provide the original repository links, which contain the instructions of the environment setting, how to run each method, etc. We also provide our additional instructions in the following section, which can make the running easier.)
 * Step 3. Generate the predicted results via the trained model and save the results file.
 * Step 4. Use the evaluation scripts to get the performance results.
 
@@ -40,9 +40,12 @@ If you want to preprocess the dataset yourself, you can download the dataset fro
 then, config the file name in the script and run.
 
 ### Format description of preprocessed dataset
+* dataset: --> G-TopFreq, P-TopFreq, GP-TopFreq
+> csv format
 * jsondata: --> Sets2Sets, TIFUKNN, DNNTSP, DREAM
 
 > history data: {uid1: [[-1], basket, basket, ..., [-1]], uid2:[[-1], basket, basket, ..., [-1]], ... }
+
 > future data: {uid1: [[-1], basket, [-1]], uid2: [[-1], basket, [-1]], ...}
 
 * mergedata: --> Beacon, CLEA, UP-CF
@@ -53,9 +56,8 @@ then, config the file name in the script and run.
 
 > {uid1: [item, item, ..., item], uid2: [item, item, ..., item], ...}
 
-
 ## Random split the dataset
-We want to analyze the experimental results, basket components and perform user level analysis, so we use keyset file to store the random split instead of random seeds to repeat experiments:
+We want to analyze the experimental results, basket components and perform user level analysis. Instead of using random seeds, we use keyset file to store the random split to repeat experiments:
 ```
 python keyset_fold.py --dataset dunnhumby --fold_id 0
 python keyset_fold.py --dataset dunnhumby --fold_id 1
@@ -76,7 +78,7 @@ Our approach to reproducibility is to rely as much as possible on the artifacts 
 * TIFUKNN: https://github.com/HaojiHu/TIFUKNN
 * UP-CF@r: https://github.com/MayloIFERR/RACF
 
-We also provide additional instructions if the original repository is not clear, as well as parameters we use.
+We also provide our additional instructions if the original repository is not clear, as well as the parameters we use.
 
 ### G-TopFreq, P-TopFreq, GP-TopFreq
 Three frequency based methods are under the folder "g-p-gp-topfreq":
@@ -85,8 +87,11 @@ Three frequency based methods are under the folder "g-p-gp-topfreq":
 * Step 2: Using the following commands to run each method:
 ```
 python g_topfreq.py --dataset dunnhumby --fold_id 0
+...
 python p_topfreq.py --dataset dunnhumby --fold_id 0
+...
 python gp_topfreq.py --dataset dunnhumby --fold_id 0
+...
 ```
 Predicted files are stored under folder: "g_top_freq", "p_top_freq", "gp_top_freq".
 
@@ -123,7 +128,6 @@ python cmatrix_generator.py --dataset dunnhumby --foldk 0
 python cmatrix_generator.py --dataset tafeng --foldk 0
 ...
 python cmatrix_generator.py --dataset instacart --foldk 0
-...
 ...
 ```
 * Step 3: Train model using the following commands:
@@ -164,7 +168,7 @@ python new_main.py --dataset dunnhumby --foldk 0 --log_fire cleamodel --alternat
 ...
 python new_main.py --dataset tafeng --foldk 0 --log_fire cleamodel --alternative_train_epoch 10 --alternative_train_epoch_D 10 --pretrain_epoch 2 --before_epoch 2 --epoch 30 --temp_learn 0 --temp 10 --num_product 11997 --num_users 13858
 ...
-python new_main.py --dataset instacart --foldk 2 --log_fire cleamodel --alternative_train_epoch 10 --alternative_train_epoch_D 10 --pretrain_epoch 2 --before_epoch 2 --epoch 30 --temp_learn 0 --temp 10 --num_product 13897 --num_users 19435
+python new_main.py --dataset instacart --foldk 1 --log_fire cleamodel --alternative_train_epoch 10 --alternative_train_epoch_D 10 --pretrain_epoch 2 --before_epoch 2 --epoch 30 --temp_learn 0 --temp 10 --num_product 13897 --num_users 19435
 ...
 ```
 * Step 4: Predict and save the results using the following commands:
@@ -173,7 +177,7 @@ python pred_results.py --dataset dunnhumby --foldk 0 --log_fire cleamodel --alte
 ...
 python pred_results.py --dataset tafeng --foldk 0 --log_fire cleamodel --alternative_train_epoch 10 --alternative_train_epoch_D 10 --pretrain_epoch 2 --before_epoch 2 --epoch 30 --temp_learn 0 --temp 10 --num_product 11997 --num_users 13858
 ...
-python pred_results.py --dataset instacart --foldk 2 --log_fire cleamodel --alternative_train_epoch 10 --alternative_train_epoch_D 10 --pretrain_epoch 2 --before_epoch 2 --epoch 30 --temp_learn 0 --temp 10 --num_product 13897 --num_users 19435
+python pred_results.py --dataset instacart --foldk 1 --log_fire cleamodel --alternative_train_epoch 10 --alternative_train_epoch_D 10 --pretrain_epoch 2 --before_epoch 2 --epoch 30 --temp_learn 0 --temp 10 --num_product 13897 --num_users 19435
 ...
 ```
 
@@ -261,12 +265,25 @@ Predicted file name: {dataset}_pred{foldk}.json
 ## Evaluation 
 Once we got the reommended basket of the model/algorithm on all datasets, you can use our scripts in the evalution folder to evaluate performance w.r.t. repetition and exploration.
 
+### Performance
+
 * Step 1: Check the dataset, keyset, pred_file path in the code.
 * Step 2: Evaluate the performance using the following commands:
 ```
 cd evaluation
 python model_performance.py --pred_folder XXX --fold_list [0, 1, 2, ...]
 ```
-XXX is the folder where you put the predicted baskets, fold_list requires a list of all the keyset files we use in the experiments.
+XXX is the folder where you put the predicted baskets, fold_list requires a list of all the keyset files you use in the experiments.
 
 The results will be printed out in the terminal and saved to "eval_results.txt".
+
+### Performance gain
+* Step 1: Check the dataset, keyset, pred_file path in the code.
+* Step 2: Evaluate the performance using the following commands:
+ ```
+cd evaluation
+python performance_gain.py --pred_folder XXX --fold_list [0, 1, 2, ...]
+```
+XXX is the folder where you put the predicted baskets, fold_list requires a list of all the keyset files you use in the experiments.
+
+The results will be printed out in the terminal.

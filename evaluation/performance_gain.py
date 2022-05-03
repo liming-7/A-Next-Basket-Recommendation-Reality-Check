@@ -1,12 +1,14 @@
-from baselines.metrics import *
+from metrics import *
 import pandas as pd
 import json
+import argparse
+import os
 
 
-def get_exp_recall(dataname, k, ind):
+def get_exp_recall(pred_folder, dataname, k, ind):
     history_file = '../dataset/'+dataname+'_history.csv'
     keyset_file = '../keyset/'+dataname+'_keyset_'+str(ind)+'.json'
-    pred_file = 'RACF/pred/'+dataname+'_pred'+str(ind)+'.json'
+    pred_file = pred_folder+dataname+'_pred'+str(ind)+'.json'
     # pred_file = 'gp-topfreq/pred/'+dataname+'_pred.json'
     truth_file = '../jsondata/'+dataname+'_future.json'
     with open(keyset_file, 'r') as f:
@@ -51,15 +53,21 @@ def get_exp_recall(dataname, k, ind):
 
     return np.mean(rep_recall), np.mean(expl_recall)
 
-for name in ['tafeng', 'dunnhumby', 'instacart']:
-    print(name)
-
-    for k in [10, 20]:
-        rep_recall = []
-        expl_recall = []
-        for ind in [0, 1, 2]:
-            ind_r_recall, ind_e_recall = get_exp_recall(name, k, ind)
-            rep_recall.append(ind_r_recall)
-            expl_recall.append(ind_e_recall)
-        print(k)
-        print(np.mean(rep_recall), np.mean(expl_recall))
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--pred_folder', type=str, required=True, help='x')
+    parser.add_argument('--fold_list', type=list, required=True, help='x')
+    args = parser.parse_args()
+    pred_folder = args.pred_folder
+    fold_list = args.fold_list
+    for name in ['tafeng', 'dunnhumby', 'instacart']:
+        print(name)
+        for k in [10, 20]:
+            rep_recall = []
+            expl_recall = []
+            for ind in fold_list:
+                ind_r_recall, ind_e_recall = get_exp_recall(pred_folder, name, k, ind)
+                rep_recall.append(ind_r_recall)
+                expl_recall.append(ind_e_recall)
+            print(k)
+            print(np.mean(rep_recall), np.mean(expl_recall))

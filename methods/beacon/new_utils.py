@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time    : 06/09/2021 09:52
-# @Author  : Ming
 import scipy.sparse as sp
 import numpy as np, os, re, itertools, math
 import json

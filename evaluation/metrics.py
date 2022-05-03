@@ -36,7 +36,6 @@ def get_DCG(truth_list, pred_rank_list, k):
 def get_NDCG(truth_list, pred_rank_list, k):
     dcg = get_DCG(truth_list, pred_rank_list, k)
     idcg = 0
-    # num_real_item = np.sum(groundtruth)
     num_item = len(truth_list)
     for i in range(num_item):
         idcg += (1) / math.log2(i + 1 + 1)
