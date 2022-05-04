@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time    : 14/09/2021 21:41
-# @Author  : Ming
 import torch
 import random
 import numpy as np
