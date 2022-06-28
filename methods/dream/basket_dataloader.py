@@ -1,7 +1,7 @@
 
 from torch.utils.data import Dataset, DataLoader
 import json
-from candidates import *
+
 
 class BasketDataset(Dataset):
 

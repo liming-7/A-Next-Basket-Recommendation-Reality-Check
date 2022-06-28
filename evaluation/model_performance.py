@@ -22,7 +22,7 @@ def get_repeat_eval(pred_folder, dataset, size, fold_list, file):
 
     for ind in fold_list:
         keyset_file = f'../keyset/{dataset}_keyset_{ind}.json'
-        pred_file = f'{pred_folder}/{dataset}_pred_{ind}.json'
+        pred_file = f'{pred_folder}/{dataset}_pred{ind}.json'
         with open(keyset_file, 'r') as f:
             keyset = json.load(f)
         with open(pred_file, 'r') as f:

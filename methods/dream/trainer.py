@@ -301,13 +301,14 @@ if __name__ == '__main__':
     dataset = args.dataset
     fold_id = args.fold_id
     loss_mode = args.loss_mode
+    attention = args.attention
 
     train_setting = args.dataset
     with open(dataset+'conf.json', 'r') as f:
         train_config = json.load(f)
     train_config['valid_metric'] = "recall20"
     train_config['loss_mode'] = loss_mode
-    train_config['data_config_file'] = train_config['data_config_file']+fold_id+'.json'
+    train_config['data_config_file'] = train_config['data_config_file']+str(fold_id)+'.json'
     train_config['attention'] = args.attention
     train_config['model_name'] = f"{dataset}-recall20-{loss_mode}-{fold_id}-{attention}-"
 
