@@ -85,6 +85,8 @@ Our approach to reproducibility is to rely as much as possible on the artifacts 
 
 We also provide our additional instructions if the original repository is not clear, as well as the parameters we use.
 
+Note that, you need to create a "pred" folder under the method folder to store the predicted results.
+
 ### G-TopFreq, P-TopFreq, GP-TopFreq
 Three frequency based methods are under the folder "methods/g-p-gp-topfreq".
 * Step 1: Check the file path of the dataset, or put the dataset into corresponding folder.
